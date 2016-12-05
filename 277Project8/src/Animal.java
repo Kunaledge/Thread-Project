@@ -1,10 +1,12 @@
 
-public class Animal {
+public class Animal implements Runnable{
 	private String name;
 	private double speed;
-	private double rest;
+	private int rest;
 	private int lap;
-	private int place;
+	private static int place=1;
+	private int lD;
+	private int finalPlace;
 	public Animal() {
 		// TODO Auto-generated constructor stub
 		name="Animal";
@@ -12,13 +14,15 @@ public class Animal {
 		rest=2;
 		lap=1;
 		place=1;
+		lD=0;
 	}
-	public Animal(String n, double s, double r){
+	public Animal(String n, double s, int r){
 		name=n;
 		speed=s;
 		rest=r;
 		lap=1;
 		place=1;
+		lD=0;
 	}
 	
 	public String getName() {
@@ -36,7 +40,7 @@ public class Animal {
 	public double getRest() {
 		return rest;
 	}
-	public void setRest(double rest) {
+	public void setRest(int rest) {
 		this.rest = rest;
 	}
 	public int getLap() {
@@ -54,6 +58,29 @@ public class Animal {
 	@Override
 	public String toString() {
 		return name + " is on lap:  " + lap;
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		while(lD<100){
+			lD+=speed;
+			if(lD>100){
+				lap++;
+				System.out.println(this);
+			}
+			if(lap==5){
+				finalPlace=place;
+				place++;
+				System.out.println(this.getName()+ " is in place: "+ finalPlace);
+				break;
+			}
+			try {
+				Thread.sleep(rest);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	
