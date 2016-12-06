@@ -4,27 +4,35 @@ public class Animal implements Runnable{
 	private double speed;
 	private int rest;
 	private int lap;
+	private int lapNum;
 	private static int place=1;
 	private int lD;
 	private int finalPlace;
 	public Animal() {
 		// TODO Auto-generated constructor stub
-		name="Animal";
+		name="Mustang";
 		speed=5;
 		rest=2;
 		lap=1;
 		place=1;
 		lD=0;
 	}
-	public Animal(String n, double s, int r){
+	public Animal(String n, double s, int r, int laps){
 		name=n;
 		speed=s;
 		rest=r;
 		lap=1;
 		place=1;
 		lD=0;
+		lapNum=laps;
 	}
 	
+	public int getLapNum() {
+		return lapNum;
+	}
+	public void setLapNum(int lapNum) {
+		this.lapNum = lapNum;
+	}
 	public String getName() {
 		return name;
 	}
@@ -62,16 +70,15 @@ public class Animal implements Runnable{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		while(lD<100){
+		
+		System.out.println("Something works...");
+		while(lap!=lapNum){
 			lD+=speed;
 			if(lD>100){
 				lap++;
 				System.out.println(this);
 			}
 			if(lap==5){
-				finalPlace=place;
-				place++;
-				System.out.println(this.getName()+ " is in place: "+ finalPlace);
 				break;
 			}
 			try {
@@ -80,9 +87,17 @@ public class Animal implements Runnable{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		finalPlace=place;
+		place++;
+		System.out.println(getName()+ " is in place: "+ finalPlace);
 	}
-	
-	
+		
 
 }
