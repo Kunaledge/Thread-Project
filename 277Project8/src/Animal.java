@@ -1,4 +1,9 @@
-
+/**
+ * @author Kunal Patel
+ * This class is the Animal Thread class. Has the animal object plus the thread data to run using the animal.
+ * Inputs: Name, Speed, RestTime, Total Laps
+ * Outputs: Periodically: Name and Current lap; At the end of race: Place and winner
+ */
 public class Animal implements Runnable{
 	private String name;
 	private double speed;
@@ -73,7 +78,7 @@ public class Animal implements Runnable{
 		// TODO Auto-generated method stub
 		while(lap!=lapNum){
 			lD+=speed;
-			if(lD>100){
+			if(lD>400){
 				System.out.println(name + " is on lap:  " + lap);
 				lap++;
 			}
