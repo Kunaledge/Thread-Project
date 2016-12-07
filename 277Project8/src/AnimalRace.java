@@ -19,9 +19,9 @@ public class AnimalRace extends JFrame {
 		anim1.setBounds(0, 50, 100, 30);
 		anim2.setBounds(0, 120, 100, 30);
 		anim3.setBounds(0, 190, 100, 30);
-		Animal a1= new Animal("Mustang", 6, 2);
-		Animal a2= new Animal("GreyHound", 4, 4);
-		Animal a3= new Animal("JackRabbit", 3, 4);
+		Animal a1= new Animal("Mustang", 6, 2,5);
+		Animal a2= new Animal("GreyHound", 4, 4,5);
+		Animal a3= new Animal("JackRabbit", 3, 4,5);
 		Thread t1= newThread(a1);
 		t1.start();
 		newThread(a2).start();
@@ -33,7 +33,7 @@ public class AnimalRace extends JFrame {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			/*int x = anim1.getX();
+			int x = anim1.getX();
 			while (true) {
 				try {
 					anim1.setBounds(x, anim1.getY(), anim1.getWidth(), anim1.getHeight());
@@ -49,14 +49,14 @@ public class AnimalRace extends JFrame {
 					}
 				} catch (Exception ex) {}
 			}
-			*/
+			
 		}
 	}
 	public static void main(String[] args){
 		new AnimalRace().setVisible(true);
 	}
 	public static Thread newThread(Animal a){
-		return new Thread(new Race(), a.getName());
+		return new Thread(a, a.getName());
 		
 	}
 

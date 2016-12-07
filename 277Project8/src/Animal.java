@@ -96,12 +96,15 @@ public class Animal implements Runnable{
 		}
 		finalPlace=place;
 		place++;
-		System.out.println(getName()+ " is in place: "+ finalPlace);
-		
-		if(this.finalPlace==1){
-			System.out.println(this.getName() + " is the Winner!!!");
+		if(finalPlace==1){
+			System.out.println(getName() + " is the Winner!!!");
+			System.out.println(getName()+ " finished in 1st place!!! ");
+		}
+		if(finalPlace==2){
+			System.out.println(getName() + " finished in 2nd place!!");
+		}
+		if(finalPlace==3){
+			System.out.println(getName() + " finished in 3rd place!");
 		}
 	}
-		
-
 }
