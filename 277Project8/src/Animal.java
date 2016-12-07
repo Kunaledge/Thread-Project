@@ -81,6 +81,7 @@ public class Animal implements Runnable{
 			if(lD>400){
 				System.out.println(name + " is on lap:  " + lap);
 				lap++;
+				lD=0+(lD-400);
 			}
 			if(lap==lapNum){
 				System.out.println(name + " has finished the race!");
@@ -93,7 +94,7 @@ public class Animal implements Runnable{
 				e.printStackTrace();
 			}
 			try {
-				Thread.sleep(100);
+				Thread.sleep(0);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
