@@ -6,11 +6,12 @@ public class Animal implements Runnable{
 	private int lap;
 	private int lapNum;
 	private static int place=1;
-	private int lD;
+	private int lD;//Lap Distance
 	private int finalPlace;
+	
 	public Animal() {
 		// TODO Auto-generated constructor stub
-		name="Mustang";
+		name="Animal";
 		speed=5;
 		rest=2;
 		lap=1;
@@ -70,15 +71,14 @@ public class Animal implements Runnable{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
-		System.out.println("Something works...");
 		while(lap!=lapNum){
 			lD+=speed;
 			if(lD>100){
+				System.out.println(name + " is on lap:  " + lap);
 				lap++;
-				System.out.println(this);
 			}
-			if(lap==5){
+			if(lap==lapNum){
+				System.out.println(name + " has finished the race!");
 				break;
 			}
 			try {
@@ -88,7 +88,7 @@ public class Animal implements Runnable{
 				e.printStackTrace();
 			}
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -97,6 +97,10 @@ public class Animal implements Runnable{
 		finalPlace=place;
 		place++;
 		System.out.println(getName()+ " is in place: "+ finalPlace);
+		
+		if(this.finalPlace==1){
+			System.out.println(this.getName() + " is the Winner!!!");
+		}
 	}
 		
 

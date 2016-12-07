@@ -3,9 +3,15 @@ public class AnimalRaceNoAnimation {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Animal a1= new Animal("Mustang", 15, 5, 5);
-		Animal a2= new Animal("GreyHound", 10, 5, 5);
-		Animal a3= new Animal("JackRabbit", 3, 2, 5);
+		String animal1= "Mustang";
+		String animal2= "GreyHound";
+		String animal3= "JackRabbit";
+		Animal a1= new Animal(animal1, 20, 10, 10);
+		a1.setName("Mustang");
+		Animal a2= new Animal(animal2, 20, 10, 10);
+		a2.setName("GreyHound");
+		Animal a3= new Animal(animal3, 20, 10, 10);
+		a3.setName("JackRabbit");
 		Thread t1=newThread(a1);
 		t1.setName("Mustang");
 		Thread t2= newThread(a2);
@@ -37,7 +43,7 @@ public class AnimalRaceNoAnimation {
 	}
 	*/
 	public static Thread newThread(Animal a){
-		return new Thread(new Animal(), a.getName());
+		return new Thread(a, a.getName());
 		
 	}
 
